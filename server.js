@@ -53,7 +53,7 @@ app.post('/auth', function(req, res){
 });
 
 app.get('/home', function(req, res){
-    if (req.session.loggedin){
+    if (req.session.loggedIn){
         res.send('Welcome back, ' + req.session.username + '!');
     } else{
         res.send('Please log in to view this page!');
