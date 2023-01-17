@@ -6,6 +6,11 @@ const mysql = require('mysql'),
     path = require('path'),
     bodyParser = require('body-parser');
 
+// Set engine
+app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.use(express.static(path.join(__dirname, 'public')));
+
 // Database connections
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -25,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 // Routes
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.render('index');
 });
 
 app.post('/auth', function(req, res){
@@ -35,30 +40,31 @@ app.post('/auth', function(req, res){
     // Ensure input fields exist and are not empty
     if (username && password){
         connection.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function(err, results, fields){
-            if (err) throw err;
-            if (res.length > 0){
-                console.log(req.session);
-                req.session.loggedIn = true;
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            if (results.length > 0){
                 req.session.username = username;
+                req.session.loggedIn = true;
                 res.redirect('/home');
-            } else{
+            } else {
                 res.send('Incorrect username and/or password!');
             }
-            res.end();
         });
     } else{
         res.send('Please enter username and password!');
-        res.end();
     }
 });
 
 app.get('/home', function(req, res){
     if (req.session.loggedIn){
-        res.send('Welcome back, ' + req.session.username + '!');
+        let username = req.session.username;
+        res.render('home', {username});
     } else{
         res.send('Please log in to view this page!');
     }
-    res.end();
 });
 
 // Listening on port

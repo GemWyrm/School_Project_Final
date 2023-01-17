@@ -21,8 +21,21 @@
                 <i class="fas fa-lock"></i>
             </label>
             <input type="password" name="password" id="password" placeholder="Password">
+            <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>// Temporary fix
             <button type="submit">Login</button>
         </form>
     </section>
 </body>
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+  
+    togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+</script>// Temporary fix
 </html>
