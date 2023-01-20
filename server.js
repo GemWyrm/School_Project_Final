@@ -58,6 +58,36 @@ app.post('/auth', function(req, res){
     }
 });
 
+app.get('/register', function(req, res){
+    res.render('register');
+});
+
+app.post('/register/auth', function(req, res){
+    // Capture input fields
+    let username = req.body.username;
+    let password = req.body.password;
+    // Ensure input fields exist and are not empty
+    if (username && password){
+        connection.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, password], function(err,results){
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            if (results.affectedRows > 0){
+                req.render('register', {regsuccess : "Congratulations! You have successfully registered!"});
+                setTimeout(function() {
+                    res.redirect('/');
+                }, 2000);
+            } else {
+                res.send('Username already exists!');
+            }
+        });
+    } else {
+        res.send('Please enter both a username and a password!');
+    }
+});
+
 app.get('/home', function(req, res){
     if (req.session.loggedIn){
         let username = req.session.username;

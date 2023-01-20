@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <section class="login">
-        <h1>Login</h1>
-        <form action="/auth" method="post">
+    <section class="login regcolor">
+        <h1>Register</h1>
+        <% if (results.affectedRows > 0){ %>
+            <p><%=regsuccess%></p>
+        <% } else { %>
+            <% } %>
+            <h1>Register</h1>
+        <form action="/register/auth" method="post">
             <label for="username">
                 <i class="fas fa-user"></i>
             </label>
@@ -22,8 +27,7 @@
             </label>
             <input type="password" name="password" id="password" placeholder="Password">
             <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i><!--Temporary fix-->
-            <a href="/register" class="reg-link">Register</a>
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
         </form>
     </section>
 </body>

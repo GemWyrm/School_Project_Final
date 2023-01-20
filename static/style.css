@@ -35,6 +35,9 @@ body {
     background-color: #3274d6;
     color: #ffffff;
 }
+.regcolor form label {
+    background-color: #1D8116;
+}
 .login form input[type="password"], .login form input[type="text"] {
     width: 310px;
     height: 50px;
@@ -53,7 +56,13 @@ body {
     color: #ffffff;
     transition: background-color 0.2s;
 }
+.regcolor form button[type="submit"] {
+    background-color: #1D8116;
+}
 .login form button[type="submit"]:hover {
     background-color: #2868c7;
     transition: background-color 0.2s;
+}
+.regcolor form button[type="submit"]:hover {
+    background-color: #197013;
 }
