@@ -75,7 +75,7 @@ app.post('/register/auth', function(req, res){
                 return;
             }
             if (results.affectedRows > 0){
-                req.render('register', {regsuccess : "Congratulations! You have successfully registered!"});
+                req.send("Congratulations! You have successfully registered!");
                 setTimeout(function() {
                     res.redirect('/');
                 }, 2000);

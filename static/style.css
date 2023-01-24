@@ -66,3 +66,59 @@ body {
 .regcolor form button[type="submit"]:hover {
     background-color: #197013;
 }
+main>nav {
+    grid-area: header;
+    display: flex;
+    height: 100px;
+    color: #5b6574;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dee0e4;
+}
+main>nav>h1 {
+    flex-grow: 1;
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 0;
+    font-size: 24px;
+}
+main>nav p {
+    margin-right: 10px;
+}
+.aside-1 {
+    grid-area: aside-1;
+}
+.aside-2 {
+    grid-area: aside-2;
+}
+.aside-3 {
+    grid-area: aside-3;
+}
+.aside-1, .aside-2, .aside-3 {
+    height: 50px;
+    padding-left: 5px;
+    border: 1px solid #dee0e4;
+    cursor: pointer;
+    color: #ffffff;
+}
+.aside-1, .aside-3 {
+    background-color: #3274d6;
+}
+.aside-2, .aside-4 {
+    background-color: #1D8116;
+}
+main>section {
+    grid-area: main;
+    padding: 0 5px 5px;
+}
+main {
+    display: grid;
+    grid-template-areas: 
+    'header header header header header'
+    'aside-1 main main main main'
+    'aside-2 main main main main'
+    'aside-3 main main main main';
+    width: 1000px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+}

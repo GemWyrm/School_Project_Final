@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Forum</title>
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <p>Welcome <%=username%>!</p>
+    <main>
+        <nav>
+            <h1>Project Forum</h1>
+            <aside>
+                <p>Welcome <%=username%>!&nbsp;<a href="/">Logout</a></p>
+            </aside>
+        </nav>
+        <aside class="aside-1">Category 1</aside>
+        <aside class="aside-2">Category 2</aside>
+        <aside class="aside-3">Category 3</aside>
+        <section>Select a category to view its questions.</section>
+    </main>
 </body>
 </html>
