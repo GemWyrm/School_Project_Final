@@ -24,8 +24,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 
 // Routes
@@ -75,7 +75,7 @@ app.post('/register/auth', function(req, res){
                 return;
             }
             if (results.affectedRows > 0){
-                req.send("Congratulations! You have successfully registered!");
+                res.send("Congratulations! You have successfully registered!");
                 setTimeout(function() {
                     res.redirect('/');
                 }, 2000);
