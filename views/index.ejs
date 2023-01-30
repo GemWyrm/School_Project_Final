@@ -40,35 +40,5 @@
     this.classList.toggle('fa-eye-slash');
 });
 </script><!--Temporary fix-->
-<script>
-    const loginForm = document.querySelector('form');
-    const errormsg = document.getElementById('errormsg');
-    loginForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        let formData = new FormData (
-            loginForm
-        );
-        console.log(formData);
-        const iterableFormData = formData.entries();
-        console.log(iterableFormData);
-        const body = {};
-        for (const pair of iterableFormData) {
-            body[pair[0]] = pair[1]
-        }
-        console.log(body, JSON.stringify(body));
-        fetch('/auth', {
-            method: 'POST',
-            headers:{ 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then((text) => errormsg.textContent = text)
-        .catch((error) => errormsg.textContent = `Could not fetch verse: ${error}`);
-    });
-</script>
+<script src="./errmsglog.js"></script>
 </html>
